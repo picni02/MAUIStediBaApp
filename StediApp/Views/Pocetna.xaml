@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StediApp.Views.Pocetna"
+             xmlns:models="clr-namespace:StediApp.Models"
+             xmlns:local="clr-namespace:StediApp"
+             BackgroundColor="#9A57F2">
+    
+    
+    <StackLayout VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Spacing="20">
+        <Image Source="./Resources/Images/pocetna.png" HeightRequest="200" WidthRequest="200" HorizontalOptions="Center" VerticalOptions="Center" />
+        <Label Text="Pritisnite dugme za nastavak dalje" FontSize="20" FontAttributes="Italic" HorizontalOptions="Center" TextColor="White" />
+        <Button Text="Verifikacija" BackgroundColor="White" WidthRequest="200" HeightRequest="52" TextColor="Black" Clicked="Biometrija" FontSize="18" FontAttributes="Bold" />
+    </StackLayout>
+    
+</ContentPage>

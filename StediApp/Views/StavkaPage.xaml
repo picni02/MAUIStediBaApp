@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StediApp.Views.StavkaPage"
+             xmlns:models="clr-namespace:StediApp.Models"
+             xmlns:views="clr-namespace:StediApp.Views"
+             x:DataType="models:Stavka"
+             Title="{Binding Name}"
+             NavigationPage.HasNavigationBar="True"
+             ToolTipProperties.Text="">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Clicked="OnSaveClicked" Text="Spremi" IconImageSource="diskette.png"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <StackLayout Spacing="10" VerticalOptions="StartAndExpand" Grid.Row="0">
+                <Label Text="Naziv"/>
+                <Editor x:Name="txtName"
+                    Text="{Binding Name}"
+                    TextChanged="txtName_TextChanged"/>
+                <Label Text="Iznos"/>
+                <Editor Text="{Binding Amount}" Keyboard="Numeric"/>
+
+                <StackLayout Orientation="Vertical">
+                    <Label Margin="0,10"
+                       HorizontalOptions="StartAndExpand"
+                       Text="Je li ovo prihod?" IsVisible="False"/>
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsIncome}" x:Name="switchIncome" IsVisible="False"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Da li je plaćeno?" Margin="0,10" HorizontalOptions="StartAndExpand" IsVisible="{Binding IsExpense}"/>
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsPaid}" IsVisible="{Binding IsExpense}" x:Name="switchPaid"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                    <Label Text="Obrisati stavku?" 
+                       TextColor="#9A57F2" 
+                       VerticalOptions="Center"
+                       HorizontalOptions="StartAndExpand"
+                       IsVisible="{Binding IsVisible}"/>
+                    <ImageButton Clicked="OnDeleteClicked" 
+                             Source="trash.png" 
+                             IsVisible="{Binding IsVisible}" 
+                             WidthRequest="50" 
+                             HeightRequest="50"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+            <Label Text="Info: Pritiskom na dugme nazad poništavaju se uneseni podaci." FontSize="12" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
